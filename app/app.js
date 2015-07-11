@@ -1,9 +1,12 @@
-angular.module('app', ['ngRoute', 'anonichat.Chatroom'])
-.config(function($routeProvider, $locationProvider) {
+angular.module('app', ['ngRoute'])
+.config(function($routeProvider) {
   $routeProvider
    .when('/app', {
-    templateUrl: 'app.html',
+    templateUrl: 'app/app.html',
     controller: 'appCtrl'
+    })
+   .otherwise({
+      redirectTo: '/app'
     });
   }
 )

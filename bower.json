@@ -5,6 +5,7 @@
     "angular": "latest",
     "angularfire": "~1.1.2",
     "firebase": "~2.2.7",
-    "Bootflat": "~2.0.4"
+    "Bootflat": "~2.0.4",
+    "angular-route": "latest"
   }
 }

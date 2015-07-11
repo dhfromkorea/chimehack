@@ -4,6 +4,7 @@
   "dependencies": {
     "angular": "latest",
     "angularfire": "~1.1.2",
-    "firebase": "~2.2.7"
+    "firebase": "~2.2.7",
+    "angular-route": "latest"
   }
 }

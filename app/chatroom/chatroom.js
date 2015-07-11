@@ -3,12 +3,12 @@ angular.module('anonichat.Chatroom', [
   'ngRoute'
 ])
 
-/*.config(['$routeProvider', function($routeProvider) {
+.config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/chatroom', {
     templateUrl: './chatroom.html',
     controller: ChatroomController
   });
-}])*/
+}])
 
 .controller('ChatroomController', ['$scope', '$firebase', 
   function($scope, $firebase) {

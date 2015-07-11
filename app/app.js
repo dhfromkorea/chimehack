@@ -1,4 +1,4 @@
-angular.module('app', ['ngRoute'])
+angular.module('app', ['ngRoute', 'anonichat.Chatroom'])
 .config(function($routeProvider, $locationProvider) {
   $routeProvider
    .when('/app', {

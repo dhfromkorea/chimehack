@@ -1,9 +1,9 @@
-<div class="well" ng-app="chatroom" ng-controller="ChatCtrl">
+<div class="well" ng-app="chatroom" ng-controller="ChatroomController">
   <form class="form-inline">
     Your name: <input type="text" ng-model="username">
   </form>
   <div ng-cloak ng-repeat="message in messages">
-    <em>{{message.from}}: </em>{{message.content}}
+    <em>{{message.name}}: </em>{{message.message}}
   </div><br/>
   <form class="form-inline" ng-submit="addMessage()">
     <input type="text" ng-model="message" placeholder="Message...">

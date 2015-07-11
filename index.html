@@ -6,16 +6,41 @@
     <title>chimehack</title>
     <link href="lib/BootFlat/css/site.min.css" rel="stylesheet">
     <script src="lib/BootFlat/js/site.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.1/angular.min.js"></script>
-    <script src="https://cdn.firebase.com/v0/firebase.js"></script>
-    <script src="https://cdn.firebase.com/libs/angularfire/0.5.0/angularfire.min.js"></script>
+    <script src='lib/angular/angular.min.js'></script>
+    <script src='lib/firebase/firebase.js'></script>
+    <script src='lib/angularfire/dist/angularfire.min.js'></script>
     <script src='lib/angular-route/angular-route.min.js'></script>
     <script src="app/app.js"></script>
+    <script src="app/chatroom/chatroom.js"></script>
+
 </head>
 
 <body ng-app="app">
-    <div ng-view></div>
+    <div class="docs-header header--noBackground">
+        <!--nav-->
+        <nav class="navbar navbar-default navbar-custom" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html"><img src="img/logo.png" height="40"></a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a class="nav-link" href="getting-started.html">Getting Started</a></li>
+                        <li><a class="nav-link" href="documentation.html">Documentation</a></li>
+                        <li><a class="nav-link" href="free-psd.html">Free PSD</a></li>
+                        <li><a class="nav-link" href="color-picker.html">Color Picker</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div ng-view></div>
+    </div>
 </body>
 
 </html>

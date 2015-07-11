@@ -5,17 +5,17 @@ angular.module('anonichat.Chatroom', [
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/chatroom', {
-    templateUrl: './chatroom.html',
-    controller: ChatroomController
+    templateUrl: 'app/chatroom/chatroom.html',
+    controller: 'ChatroomController'
   });
 }])
 
-.controller('ChatroomController', ['$scope', '$firebase', 
-  function($scope, $firebase) {
-  
+.controller('ChatroomController', ['$scope', '$firebaseArray',
+  function($scope, $firebaseArray) {
+
   var ref = new Firebase('https://anonichat.firebaseio.com/anonichat');
 
-  $scope.messages = $firebase(ref.limit(15));
+  $scope.messages = $firebaseArray(ref.limitToLast(15));
   $scope.username = "You";
 
   $scope.addMessage = function() {

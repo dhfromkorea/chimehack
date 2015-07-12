@@ -22,10 +22,10 @@
   var ref = new Firebase('https://anonichat.firebaseio.com/requests');
   var requests = $firebaseArray(ref);
 
-  $scope.domain = '';
+  $scope.domain = 'TEST ABCD';
   $scope.waiting = false;
   $scope.ready = false;
-
+  $scope.listenerName = '';
 
   var request = null;
   var roomId = null;
@@ -44,6 +44,7 @@
       request.on('value', function(snapshot) {
         request = snapshot;
         if(request.val().roomId) {
+          $scope.listenerName = request.val().listenerName;
           $scope.ready = true;
         }
       });

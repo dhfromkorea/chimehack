@@ -23,23 +23,26 @@ angular.module('anonichat.Chatroom', [
 
         $scope.messages = $firebaseArray(refRoom.child('messages'));
         // $scope.listener = null;
-        $scope.listener = {
+        var defaultListenerProfile = {
             name: 'Lisa Kingsley',
-            story: 'I have been there. I may not know a solution, but I can definitely listen to your story and share your pain.',
+            story: 'I have been there. I may not know the answer, but I can certainly listen.',
             imgUrl: 'http://orig05.deviantart.net/33cb/f/2010/122/6/2/young_woman_4_by_imaswedestock.jpg'
         };
+        $scope.listener = defaultListenerProfile;
         var username = "You";
 
-        Auth.$onAuth(function(authData) {
-            // var ref = new Firebase("https://anonichat.firebaseio.com/listeners/" + authData.uid);
-            // syncListener = $firebaseObject(ref);
-            // syncListener.$bindTo($scope, 'listener');
-        });
 
         $scope.$watch('listener', function(newVal) {
             if ($scope.listener) {
                 username = $scope.listener.name;
-                console.log(username);
+            }
+        });
+
+        Auth.$onAuth(function(authData) {
+            if (authData.uid) {
+                var ref = new Firebase("https://anonichat.firebaseio.com/listeners/" + authData.uid);
+                syncListener = $firebaseObject(ref);
+                syncListener.$bindTo($scope, 'listener');
             }
         });
 
@@ -69,5 +72,6 @@ angular.module('anonichat.Chatroom', [
             });
         };
         // just for the time being. you can delete: END
+
     }
 ]);

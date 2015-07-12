@@ -36,6 +36,7 @@
 .chat-history {
     padding: 8px 30px;
     overflow-y: scroll;
+    height: 500px;
 }
 
 .chat-message {
@@ -84,4 +85,7 @@
     float: right;
     padding: 15px 10px;
     width: 20%;
+}
+.scroll-anchor {
+    height: 100px;
 }

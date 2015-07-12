@@ -6,6 +6,7 @@
     "angularfire": "~1.1.2",
     "firebase": "~2.2.7",
     "Bootflat": "~2.0.4",
-    "angular-route": "~1.4.2"
+    "angular-route": "~1.4.2",
+    "Selecter": "~3.2.4"
   }
 }

@@ -1,12 +1,25 @@
-<div class="well" ng-controller="StartchatController">
-    <div class="selecter closed">
-        <select name="selecter_basic" class="selecter-element" ng-model="selected">
-            <option ng-repeat="domain in domains">{{domain}}</option>
+<div class="desc__introduces">
+    <div class="row" ng-controller="StartchatController">
+        <div class="col-md-4 col-md-offset-4">
+            <p>Hi! We are here to help.</p>
+            <p>We are a team of people who deeply care about the issues related to sexual assualts. Once you tell us a little bit about your situation, we will connect to a <i>real</i> person who has the right experience to help you.</p>
+            <h3>What kind of help do you need most?</h3>
+            <select name="" class="selecter" ng-model="selected">
+                <option value="1">Legal issues</option>
+                <option value="2">Psychology</option>
+                <option value="3">Comforting</option>
+                <option value="4">Experienced</option>
+                <option value="5">Listener</option>
+                <option value="6">I am not sure. A little bit of everything.</option>
+            </select>
+            <!-- <select class="selecter" ng-options="domain for domain in domains" ng-model="selected">
         </select>
+         -->
+            <form class="form-inline" ng-submit="createChatroom()">
+                <button class="btn btn-primary" type="submit">
+                    <i class="icon-reply">Connect to a listener</i>
+                </button>
+            </form>
+        </div>
     </div>
-    <form class="form-inline" ng-submit="createChatroom()">
-        <button class="btn" type="submit">
-            <i class="icon-reply">Send</i>
-        </button>
-    </form>
 </div>

@@ -4,20 +4,26 @@ angular.module('anonichat.Chatroom', [
 ])
 
 .config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/chatroom', {
-    templateUrl: 'app/chatroom/chatroom.html',
-    controller: 'ChatroomController'
-  });
+  $routeProvider
+    .when('/chatroom/:id', {
+      templateUrl: 'app/chatroom/chatroom.html',
+      controller: 'ChatroomController'
+    });
 }])
 
-.controller('ChatroomController', ['$scope', '$firebaseArray',
-  function($scope, $firebaseArray) {
+.controller('ChatroomController', ['$scope', '$firebaseObject', '$firebaseArray', '$routeParams',
+  function($scope, $firebaseObject, $firebaseArray, $routeParams) {
 
-  var ref = new Firebase('https://anonichat.firebaseio.com/anonichat');
+  $scope.room = null;
 
-  $scope.messages = $firebaseArray(ref.limitToLast(15));
+  var refRoom = new Firebase('https://anonichat.firebaseio.com/chatrooms/' + $routeParams.id);
+  var syncRoom = $firebaseObject(refRoom);
+  syncRoom.$bindTo($scope, "room");
+
+  var refMessages = new Firebase('https://anonichat.firebaseio.com/chatrooms/' + $routeParams.id + '/messages');
+  $scope.messages = $firebaseArray(refMessages);
+
   $scope.username = "You";
-
   $scope.addMessage = function() {
     $scope.messages.$add({
       name: $scope.username,

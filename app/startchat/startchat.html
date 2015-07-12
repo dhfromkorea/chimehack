@@ -1,0 +1,12 @@
+Create new chatroom <br /><br />
+<div class="well" ng-controller="StartchatController">
+  <form class="form-inline">
+    Listener ID: <input type="text" ng-model="listenerId">
+  </form>
+  
+  <form class="form-inline" ng-submit="createChatroom()">
+    <button class="btn" type="submit">
+      <i class="icon-reply"> Send</i>
+    </button>
+  </form>
+</div>

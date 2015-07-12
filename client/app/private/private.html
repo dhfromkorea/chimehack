@@ -1,3 +1,9 @@
 <h1>Private</h1>
 
 {{listener}}
+
+<h2>Open requests</h2>
+<ul>
+<li ng-repeat="request in requests">
+Request in category <strong>{{request.domain}}</strong> <button ng-click="accept($index);">Accept</button> (ROomid: {{request.roomId}})
+</li>

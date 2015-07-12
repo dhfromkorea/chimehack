@@ -29,12 +29,6 @@ angular.module('anonichat.Chatroom', [
         };
         $scope.listener = defaultListenerProfile;
 
-        $scope.$watch('listener', function(newVal) {
-            if ($scope.listener) {
-                username = $scope.listener.name;
-            }
-        });
-
         $scope.$watch('room', function(newVal) {
             if($scope.room) {
                 var ref = new Firebase("https://anonichat.firebaseio.com/listeners/" + $scope.room.listenerId);
@@ -43,9 +37,15 @@ angular.module('anonichat.Chatroom', [
             } 
         });
         
+        var username = 'You';
         Auth.$onAuth(function(authData) {
-            if (authData.uid) {
-                var username = $scope.listener.name;
+            console.log("Authenticated");
+            console.log(authData);
+            if (authData) {
+                console.log("Authenticated and set ID");
+                console.log(authData);
+                console.log($scope.listener);
+                username = $scope.listener.name;
             }
         });
 

@@ -1,0 +1,19 @@
+{
+  "name": "chimehack",
+  "version": "0.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "gulp test",
+    "start": "node server/server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "morgan": "^1.6.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.4.3",
+    "express": "^4.4.5"
+  }
+}

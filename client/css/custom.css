@@ -77,4 +77,11 @@
     background-color: #e6e9ed;
     border-color: #e6e9ed;
     padding:25px 10px;
+    width:80%;
+    display: inline-block;
+}
+.chat-send-btn {
+    float: right;
+    padding: 15px 10px;
+    width: 20%;
 }

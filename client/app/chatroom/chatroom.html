@@ -10,7 +10,7 @@
                     <div class="chat-message" ng-cloak ng-repeat="message in messages">
                         <div class="row">
                             <div class="col-md-10">
-                                <img src="{{message.profileImg}}" alt="" width="20" height="20">
+                                <!--img src="{{message.profileImg}}" alt="" width="20" height="20"-->
                                 <img src="http://lorempixum.com/20/20/people" alt="" width="20" height="20">
                                 <h5>Listener</h5>
                             </div>
@@ -21,18 +21,13 @@
                         <p><em>{{message.name}}:&nbsp;</em>{{message.message}}</p>
                     </div>
                 </div>
-                <div class="form-group" ng-submit="addMessage()">
+                <form class="form-group" ng-submit="addMessage()">
                     <input type="text" placeholder="Message:" class="form-control chat-input-box" ng-model="message">
-                </div>
+                    <button type="submit" class="btn chat-send-btn" data-type="last">Send</button>
+                </form>
             </div>
-            <!-- end chat-history -->
         </div>
-        <!-- end chat -->
     </div>
-    <!--     <form class="form-inline">
-        Your name:
-        <input type="text" ng-model="username">
-    </form> -->
 </div>
 </div>
 </div>

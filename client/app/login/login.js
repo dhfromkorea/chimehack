@@ -12,7 +12,7 @@ angular.module('anonichat.Login', [
     });
 }])
 
-.controller('LoginController', ['$scope', '$location', 'Auth',
+.controller('LoginController', ['$scope', '$location', 'Auth', 
   function($scope, $location, Auth) {
 
   $scope.email = '';
@@ -26,10 +26,12 @@ angular.module('anonichat.Login', [
     Auth.$authWithPassword({
       email: $scope.email,
       password: $scope.password
-    }).then(function(authData) {
+    })
+    .then(function(authData) {
       console.log("Logged in as:", authData.uid);
       $location.path('/private')
-    }).catch(function(error) {
+    })
+    .catch(function(error) {
       console.error("Authentication failed:", error);
     });
 

@@ -1,0 +1,31 @@
+<h1>Signup</h1>
+
+<form class="form-inline" ng-submit="register()" ng-show="!registered">
+  Email: <input type="email" ng-model="email" placeholder="Email"><br />
+  Password: <input type="password" ng-model="password" placeholder="Password"><br />
+  <button class="btn" type="submit">
+    <i class="icon-reply"> Register</i>
+  </button>
+</form>
+
+
+<form class="form-inline" ng-submit="saveInformation()" ng-show="registered && !infosaved">
+  Thanks for registering. Please fill out the following stuff.<br /><br />
+  Name: <input type="text" ng-model="listener.name" placeholder="Full name"><br />
+  Phone: <input type="text" ng-model="listener.phone" placeholder="Phone number"><br />
+  Domains: <br />
+  <label ng-repeat="domain in domains">
+    <input type="checkbox" checklist-model="listener.domains" checklist-value="domain"> {{domain}}
+  </label><br />
+  Personal story:<br />
+  <textarea ng-model="listener.story"></textarea>
+
+  <button class="btn" type="submit">
+    <i class="icon-reply"> Register</i>
+  </button>
+</form>
+
+<div ng-show="infosaved">
+Thanks for registering. Use the button below to go to the private space.<br /><br />
+<button ng-click="loginRedirect()">Private space</button>
+</div>

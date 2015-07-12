@@ -1,29 +1,44 @@
-angular.module('anonichat.Chatroom', [
-  'firebase',
-  'ngRoute'
-])
+(function() {
+    angular.module('anonichat.Chatroom', [
+        'firebase',
+        'ngRoute'
+    ])
 
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/chatroom', {
-    templateUrl: 'app/chatroom/chatroom.html',
-    controller: 'ChatroomController'
-  });
-}])
+    .config(['$routeProvider', function($routeProvider) {
+        $routeProvider
+            .when('/chatroom/:id', {
+                templateUrl: 'app/chatroom/chatroom.html',
+                controller: 'ChatroomController'
+            });
+    }])
 
-.controller('ChatroomController', ['$scope', '$firebaseArray',
-  function($scope, $firebaseArray) {
+    .controller('ChatroomController', ['$scope', '$firebaseObject', '$firebaseArray', '$routeParams',
+        function($scope, $firebaseObject, $firebaseArray, $routeParams) {
 
-  var ref = new Firebase('https://anonichat.firebaseio.com/anonichat');
+            $scope.room = null;
 
-  $scope.messages = $firebaseArray(ref.limitToLast(15));
-  $scope.username = "You";
+            var refRoom = new Firebase('https://anonichat.firebaseio.com/chatrooms/' + $routeParams.id);
+            var syncRoom = $firebaseObject(refRoom);
+            syncRoom.$bindTo($scope, "room");
 
-  $scope.addMessage = function() {
-    $scope.messages.$add({
-      name: $scope.username,
-      message: $scope.message
-    });
-    $scope.message = "";
-  };
+            $scope.messages = $firebaseArray(refRoom.child('messages'));
 
-}]);
+            $scope.username = "You";
+            $scope.addMessage = function() {
+                $scope.messages.$add({
+                    name: $scope.username,
+                    message: $scope.message
+                });
+                $scope.message = "";
+                scrollChatToTop();
+            };
+
+
+        }
+    ]);
+
+    function scrollChatToTop() {
+        var anchor = angular.element('.scroll-anchor')[0];
+        anchor.scrollIntoView();
+    }
+})();

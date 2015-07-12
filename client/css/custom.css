@@ -1,3 +1,87 @@
 .home {
     background: url('../img/main.jpg') no-repeat 50% 100px;
 }
+/* ---------- chat ---------- */
+
+.live-chat {
+    padding: 40px 30px;
+    right: 24px;
+}
+
+.live-chat header {
+    background: #3BAFDA;
+    border-radius: 5px 5px 2px 2px;
+    color: #fff;
+    cursor: pointer;
+    padding: 10px 20px;
+}
+
+
+.circle {
+    border-radius: 50%;
+    margin: 0.15em;
+    font-size: 3em;
+}
+
+.close-button {
+    color: #CCD1D9;
+}
+
+.chat {
+    background: #fff;
+    border-left: 3px solid whitesmoke;
+    border-right: 3px solid whitesmoke;
+}
+
+.chat-history {
+    padding: 8px 30px;
+    overflow-y: scroll;
+}
+
+.chat-message {
+    margin: 16px 0;
+    padding: 10px 20px 30px;
+    border-bottom: 3px solid whitesmoke;
+}
+
+.chat-message:last-child {
+    border-bottom: none;
+}
+
+.chat-message h5 {
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.chat-message p {
+    width: 90%;
+}
+
+.chat-message img {
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.chat-message-content {}
+
+.chat-time {
+    float: right;
+}
+
+.chat-feedback {
+    font-style: italic;
+    margin: 0 0 0 80px;
+}
+
+.chat-input-box {
+    background-color: #e6e9ed;
+    border-color: #e6e9ed;
+    padding:25px 10px;
+    width:80%;
+    display: inline-block;
+}
+.chat-send-btn {
+    float: right;
+    padding: 15px 10px;
+    width: 20%;
+}

@@ -31,4 +31,9 @@ angular.module('anonichat.Chatroom', [
     $scope.message = "";
   };
 
+  // for chat room GUI starts
+
+
+  // for chat room GUI ends
+
 }]);

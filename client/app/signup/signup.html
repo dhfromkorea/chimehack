@@ -1,0 +1,14 @@
+<h1>Signup</h1>
+
+<form class="form-inline" ng-submit="register()" ng-show="!registered">
+  Email: <input type="email" ng-model="email" placeholder="Email"><br />
+  Password: <input type="password" ng-model="password" placeholder="Password"><br />
+  <button class="btn" type="submit">
+    <i class="icon-reply"> Register</i>
+  </button>
+</form>
+
+<div ng-show="registered">
+Thanks for registering. Use the button below to go to the private space.<br /><br />
+<button ng-click="loginRedirect()">Private space</button>
+</div>

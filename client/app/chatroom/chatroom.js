@@ -63,8 +63,8 @@ angular.module('anonichat.Chatroom', [
             chatrooms.$add({
                 listenerId: $scope.listenerId,
                 messages: [{
-                    name: 'anonichat',
-                    message: 'Welcome to the chat!'
+                    name: 'Glasschat (friendly bot)',
+                    message: 'Hi! You are now talking to Lisa. Worry not. We do not record anything. This chat is completely anonynmous.'
                 }]
             }).then(function(room) {
                 console.log("room created with ID " + room.key());

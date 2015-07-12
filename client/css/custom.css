@@ -84,10 +84,10 @@
     height: 100px;
 }
 
-.selecter {
+/*.selecter {
     margin: 30px 0;
 }
-
+*/
 .docs-header {
     padding-top: 70px;
 }
@@ -109,16 +109,16 @@
 .chat-profile {
     background: #fff;
     border-radius: .3em;
-    max-width: 50%;
+    max-width: 35%;
     padding: 3px;
 }
 
 
 .chat-profile > .avatar {
-    padding: .7em;
-    float: left;
-    height: 6.23em;
-    width: 6.23em;
-    border-radius: 18em;
+float: left;
+  height: 5em;
+  width: 5em;
+  border-radius: 18em;
+  margin: 25px 10px;
 }
 

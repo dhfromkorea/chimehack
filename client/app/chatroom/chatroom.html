@@ -1,16 +1,65 @@
-Room ID: {{room.$id}}<br />Number of messages: {{messages.length}}
-
-<div class="well" ng-app="chatroom" ng-controller="ChatroomController">
-  <form class="form-inline">
-    Your name: <input type="text" ng-model="username">
-  </form>
-  <div ng-cloak ng-repeat="message in messages">
-    <em>{{message.name}}: </em>{{message.message}}
-  </div><br/>
-  <form class="form-inline" ng-submit="addMessage()">
-    <input type="text" ng-model="message" placeholder="Message...">
-    <button class="btn" type="submit">
-      <i class="icon-reply"> Send</i>
-    </button>
-  </form>
+<!-- Room ID: {{room.$id}}<br />Number of messages: {{messages.length}} -->
+<div class="row" ng-app="chatroom" ng-controller="ChatroomController">
+    <div class="col-md-8 col-md-offset-2">
+        <div class="live-chat">
+            <header class="">
+                <h4>private chat room</h4>
+            </header>
+            <div class="chat">
+                <div class="chat-history">
+                    <div class="chat-message">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <img src="http://lorempixum.com/20/20/people" alt="" width="20" height="20">
+                                <h5>Listener</h5>
+                            </div>
+                            <div class="col-md-2">
+                                <span class="chat-time">13:35</span>
+                            </div>
+                        </div>
+                        <p>Hey there, how may I help? (Don't worry. We do not store any personally identifiable data and the conversation takes place anonymously.)</p>
+                    </div>
+                    <div class="chat-message">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <img src="http://lorempixum.com/20/20/people" alt="" width="20" height="20">
+                                <h5>Listener</h5>
+                            </div>
+                            <div class="col-md-2">
+                                <span class="chat-time">13:35</span>
+                            </div>
+                        </div>
+                        <p>Hey there, how may I help? (Don't worry. We do not store any personally identifiable data and the conversation takes place anonymously.)</p>
+                    </div>
+                    <div class="chat-message">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <img src="http://lorempixum.com/20/20/people" alt="" width="20" height="20">
+                                <h5>Listener</h5>
+                            </div>
+                            <div class="col-md-2">
+                                <span class="chat-time">13:35</span>
+                            </div>
+                        </div>
+                        <p>Hey there, how may I help? (Don't worry. We do not store any personally identifiable data and the conversation takes place anonymously.)</p>
+                    </div>
+                </div>
+                <div class="form-group" ng-submit="addMessage()">
+                    <input type="text" placeholder="Message:" class="form-control chat-input-box" ng-model="message">
+                </div>
+            </div>
+            <!-- end chat-history -->
+        </div>
+        <!-- end chat -->
+    </div>
+    <!--         <form class="form-inline">
+            Your name:
+            <input type="text" ng-model="username">
+        </form>
+        <div ng-cloak ng-repeat="message in messages">
+            <em>{{message.name}}: </em>{{message.message}}
+        </div>
+        <br/>
+    </div>
+</div>
 </div>

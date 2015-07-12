@@ -1,12 +1,20 @@
 Create new chatroom <br /><br />
-<div class="well" ng-controller="StartchatController">
+<div class="well" ng-show="!waiting">
   <form class="form-inline">
-    Listener ID: <input type="text" ng-model="listenerId">
+    Domain: <input type="text" ng-model="domain">
   </form>
   
-  <form class="form-inline" ng-submit="createChatroom()">
+  <form class="form-inline" ng-submit="startChat()">
     <button class="btn" type="submit">
       <i class="icon-reply"> Send</i>
     </button>
   </form>
+</div>
+
+<div ng-show="waiting && !ready">
+Waiting..... for a listener.
+</div>
+
+<div ng-show="ready">
+We have connected you with a listener. <button ng-click="goToRoom()">Go to the chatroom</button>
 </div>

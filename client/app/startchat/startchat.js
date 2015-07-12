@@ -11,27 +11,46 @@ angular.module('anonichat.Startchat', [
     });
 }])
 
-.controller('StartchatController', ['$scope', '$firebaseArray', '$location',
-  function($scope, $firebaseArray, $location) {
+.controller('StartchatController', ['$scope', '$firebaseArray', '$firebaseObject', '$location',
+  function($scope, $firebaseArray, $firebaseObject, $location) {
 
-  var ref = new Firebase('https://anonichat.firebaseio.com/chatrooms');
+  var ref = new Firebase('https://anonichat.firebaseio.com/requests');
+  var requests = $firebaseArray(ref);
 
-  chatrooms = $firebaseArray(ref);
-  $scope.listenerId = 2;
+  $scope.domain = '';
+  $scope.waiting = false;
+  $scope.ready = false;
 
-  $scope.createChatroom = function() {
-    chatrooms.$add({
-      listenerId: $scope.listenerId,
-      messages: [
-        {
-          name: 'anonichat',
-          message: 'Welcome to the chat!'
+
+  var request = null;
+  var roomId = null;
+
+  $scope.startChat = function() {
+
+    console.log('starting chat');
+
+    requests.$add({
+      domain: $scope.domain,
+      roomId: null
+    }).then(function(req) {
+      request = req;
+      $scope.waiting = true;
+      // wait for a update on request
+      request.on('value', function(snapshot) {
+        request = snapshot;
+        if(request.val().roomId) {
+          $scope.ready = true;
         }
-      ]
-    }).then(function(room) {
-      console.log("room created with ID " + room.key());
-      $location.path('/chatroom/' + room.key());
+      });
+
     });
+
+  }
+
+  $scope.goToRoom = function() {
+    console.log(request);
+    console.log(request.key(), request.val().roomId);
+    $location.path('/chatroom/' + request.val().roomId);
   };
 
 }]);

@@ -4,5 +4,5 @@ var app = express();
 require('./config/config.js')(app, express);
 
 // export our app for testing and flexibility, required by index.js
-app.listen(3000);
-console.log('listening at', 3000);
+app.listen(process.env.PORT || 4000);
+console.log('listening at ', process.env.PORT);

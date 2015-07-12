@@ -41,6 +41,7 @@ angular.module('anonichat.Private', [
           }]
         }).then(function(room) {
           $scope.requests[key].roomId = room.key();
+          $scope.requests[key].listenerName = $scope.listener.name;
           $scope.requests.$save(key).then(function(ref) {
             console.log('redirecting to room ' + room.key());
             $location.path('/chatroom/' + room.key());

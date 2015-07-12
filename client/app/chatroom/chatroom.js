@@ -15,11 +15,11 @@ angular.module('anonichat.Chatroom', [
 .controller('ChatroomController', ['$scope', 'Auth', '$firebaseArray', '$firebaseObject', '$routeParams',
   function($scope, Auth, $firebaseArray, $firebaseObject,  $routeParams) {
 
-      var refRoom = new Firebase('https://anonichat.firebaseio.com/chatrooms/' + $routeParams.id);
-      var syncRoom = $firebaseObject(refRoom);
-      syncRoom.$bindTo($scope, "room");
+  var refRoom = new Firebase('https://anonichat.firebaseio.com/chatrooms/' + $routeParams.id);
+  var syncRoom = $firebaseObject(refRoom);
+  syncRoom.$bindTo($scope, "room");
 
-      $scope.messages = $firebaseArray(refRoom.child('messages'));
+  $scope.messages = $firebaseArray(refRoom.child('messages'));
 
   $scope.messages = $firebaseArray(refRoom.child('messages'));
   $scope.listener = null;
@@ -27,9 +27,11 @@ angular.module('anonichat.Chatroom', [
   var username = "You";
 
   Auth.$onAuth(function(authData) {
-    var ref = new Firebase("https://anonichat.firebaseio.com/listeners/" + authData.uid);
-    syncListener = $firebaseObject(ref);
-    syncListener.$bindTo($scope, 'listener');
+    if(authData.uid) {
+      var ref = new Firebase("https://anonichat.firebaseio.com/listeners/" + authData.uid);
+      syncListener = $firebaseObject(ref);
+      syncListener.$bindTo($scope, 'listener');
+    }
   });
 
   $scope.$watch('listener', function(newVal) {
@@ -47,5 +49,5 @@ angular.module('anonichat.Chatroom', [
     $scope.message = "";
   };
 
-    }
+}
 ]);

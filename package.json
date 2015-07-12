@@ -6,7 +6,7 @@
   "scripts": {
     "test": "gulp test",
     "start": "node server/server.js",
-    "postinstall": "./node_modules/bower/bin/bower install"
+    "postinstall": "./node_modules/bower/bin/bower install --config.directory='client/lib'"
   },
   "author": "",
   "license": "ISC",

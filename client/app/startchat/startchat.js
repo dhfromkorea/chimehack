@@ -1,6 +1,7 @@
 angular.module('anonichat.Startchat', [
   'firebase',
-  'ngRoute'
+  'ngRoute',
+  'Domains'
 ])
 
 .config(['$routeProvider', function($routeProvider) {
@@ -11,8 +12,8 @@ angular.module('anonichat.Startchat', [
     });
 }])
 
-.controller('StartchatController', ['$scope', '$firebaseArray', '$location',
-  function($scope, $firebaseArray, $location) {
+.controller('StartchatController', ['$scope', '$firebaseArray', '$location','Domains',
+  function($scope, $firebaseArray, $location, Domains) {
 
   var ref = new Firebase('https://anonichat.firebaseio.com/chatrooms');
 
@@ -33,5 +34,8 @@ angular.module('anonichat.Startchat', [
       $location.path('/chatroom/' + room.key());
     });
   };
+  console.log(Domains);
+  $scope.domains = Domains;
+  $scope.selected = Domains[0];
 
 }]);

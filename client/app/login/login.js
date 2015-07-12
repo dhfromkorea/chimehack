@@ -1,6 +1,7 @@
 angular.module('anonichat.Login', [
   'firebase',
-  'ngRoute'
+  'ngRoute',
+  'Auth'
 ])
 
 .config(['$routeProvider', function($routeProvider) {
@@ -11,10 +12,8 @@ angular.module('anonichat.Login', [
     });
 }])
 
-.controller('LoginController', ['$scope', '$location',
-  function($scope, $location) {
-
-  var ref = new Firebase('https://anonichat.firebaseio.com/');
+.controller('LoginController', ['$scope', '$location', 'Auth',
+  function($scope, $location, Auth) {
 
   $scope.email = '';
   $scope.password = '';
@@ -23,19 +22,17 @@ angular.module('anonichat.Login', [
    * DUPLICATE in signup.js
    */
   $scope.login = function() {
-    ref.authWithPassword({
-      email    : $scope.email,
-      password : $scope.password
-    }, function(error, authData) {
-      if (error) {
-        console.log("Login Failed!", error);
-      } else {
-        console.log("Authenticated successfully with payload:", authData);
-        $location.path('/private')
-      }
-    }, {
-      remember: "sessionOnly"
+    
+    Auth.$authWithPassword({
+      email: $scope.email,
+      password: $scope.password
+    }).then(function(authData) {
+      console.log("Logged in as:", authData.uid);
+      $location.path('/private')
+    }).catch(function(error) {
+      console.error("Authentication failed:", error);
     });
+
   };
 
 }]);

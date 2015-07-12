@@ -1,6 +1,7 @@
 angular.module('anonichat.Signup', [
   'firebase',
-  'ngRoute'
+  'ngRoute',
+  'Auth'
 ])
 
 .config(['$routeProvider', function($routeProvider) {
@@ -11,33 +12,30 @@ angular.module('anonichat.Signup', [
     });
 }])
 
-.controller('SignupController', ['$scope', '$location',
-  function($scope, $location) {
-
-  var ref = new Firebase('https://anonichat.firebaseio.com/');
+.controller('SignupController', ['$scope', '$location', 'Auth',
+  function($scope, $location, Auth) {
 
   $scope.email = '';
   $scope.password = '';
 
   $scope.registered = false;
+  $scope.error = null;
 
   /**
    * Register a user after clicking the button.
    */
   $scope.register = function() {
-    ref.createUser({
-      email     : $scope.email,
-      password  : $scope.password
-    }, function (error, userData) {
-      if(error) {
-        console.log('Error creating user', error);
-      } else {
-        $scope.$apply(function() {
-          $scope.registered = true;
-        });
-        console.log('Succesfully created user', userData);
-      }
-    })
+
+    Auth.$createUser({
+      email: $scope.email,
+      password: $scope.password
+    }).then(function(userData) {
+      $scope.registered = true
+      console.log("User created with uid: " + userData.uid);
+    }).catch(function(error) {
+      $scope.error = error;
+    });
+
   };
 
   /**
@@ -45,18 +43,15 @@ angular.module('anonichat.Signup', [
    * and redirect it to the admin page.
    */
   $scope.loginRedirect = function() {
-    ref.authWithPassword({
-      email    : $scope.email,
-      password : $scope.password
-    }, function(error, authData) {
-      if (error) {
-        console.log("Login Failed!", error);
-      } else {
-        console.log("Authenticated successfully with payload:", authData);
-        $location.path('/private')
-      }
-    }, {
-      remember: "sessionOnly"
+
+    Auth.$authWithPassword({
+      email: $scope.email,
+      password: $scope.password
+    }).then(function(authData) {
+      console.log("Logged in as:", authData.uid);
+      $location.path('/private')
+    }).catch(function(error) {
+      console.error("Authentication failed:", error);
     });
 
   }

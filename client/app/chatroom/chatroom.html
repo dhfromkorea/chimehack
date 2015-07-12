@@ -7,41 +7,18 @@
             </header>
             <div class="chat">
                 <div class="chat-history">
-                    <div class="chat-message">
+                    <div class="chat-message" ng-cloak ng-repeat="message in messages">
                         <div class="row">
                             <div class="col-md-10">
+                                <img src="{{message.profileImg}}" alt="" width="20" height="20">
                                 <img src="http://lorempixum.com/20/20/people" alt="" width="20" height="20">
                                 <h5>Listener</h5>
                             </div>
                             <div class="col-md-2">
-                                <span class="chat-time">13:35</span>
+                                <span class="chat-time">{{message.createdAt}}</span>
                             </div>
                         </div>
-                        <p>Hey there, how may I help? (Don't worry. We do not store any personally identifiable data and the conversation takes place anonymously.)</p>
-                    </div>
-                    <div class="chat-message">
-                        <div class="row">
-                            <div class="col-md-10">
-                                <img src="http://lorempixum.com/20/20/people" alt="" width="20" height="20">
-                                <h5>Listener</h5>
-                            </div>
-                            <div class="col-md-2">
-                                <span class="chat-time">13:35</span>
-                            </div>
-                        </div>
-                        <p>Hey there, how may I help? (Don't worry. We do not store any personally identifiable data and the conversation takes place anonymously.)</p>
-                    </div>
-                    <div class="chat-message">
-                        <div class="row">
-                            <div class="col-md-10">
-                                <img src="http://lorempixum.com/20/20/people" alt="" width="20" height="20">
-                                <h5>Listener</h5>
-                            </div>
-                            <div class="col-md-2">
-                                <span class="chat-time">13:35</span>
-                            </div>
-                        </div>
-                        <p>Hey there, how may I help? (Don't worry. We do not store any personally identifiable data and the conversation takes place anonymously.)</p>
+                        <p><em>{{message.name}}:&nbsp;</em>{{message.message}}</p>
                     </div>
                 </div>
                 <div class="form-group" ng-submit="addMessage()">
@@ -52,14 +29,10 @@
         </div>
         <!-- end chat -->
     </div>
-    <!--         <form class="form-inline">
-            Your name:
-            <input type="text" ng-model="username">
-        </form>
-        <div ng-cloak ng-repeat="message in messages">
-            <em>{{message.name}}: </em>{{message.message}}
-        </div>
-        <br/>
-    </div>
+    <!--     <form class="form-inline">
+        Your name:
+        <input type="text" ng-model="username">
+    </form> -->
+</div>
 </div>
 </div>

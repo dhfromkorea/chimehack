@@ -1,5 +1,5 @@
 # idea
-We make it super easy for female victims (from sexual assaults) to find someone to talk to for support. We provide a 24/7 private, anonymous and free chat service. 
+We make it super easy for female victims (from sexual assaults) to find someone to talk to for support. We provide a 24/7 private, anonymous and free chat service. nj j\
 
 ### Demo: 
 http://glasschat.org

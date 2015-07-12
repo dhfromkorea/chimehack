@@ -10,10 +10,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "morgan": "^1.6.1"
   },
   "dependencies": {
     "body-parser": "^1.4.3",
+    "morgan": "^1.6.1",
     "express": "^4.4.5"
   }
 }

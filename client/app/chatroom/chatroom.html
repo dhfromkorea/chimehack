@@ -2,9 +2,13 @@
 <div class="row" ng-app="chatroom" ng-controller="ChatroomController">
     <div class="col-md-8 col-md-offset-2">
         <div class="live-chat">
-            <header class="">
-                <h4>private chat room</h4>
-            </header>
+            <div class="chat-header">
+                <div class="chat-profile">
+                    <img class="avatar" src="{{listener.imgUrl}}" alt="Ash" />
+                    <h5 class="chat-listener-name">{{listener.name}}</h5>
+                    <p class="chat-listener-story">{{listener.story}}</p>
+                </div>
+            </div>
             <div class="chat">
                 <div class="chat-history">
                     <div class="chat-message" ng-cloak ng-repeat="message in messages">

@@ -20,8 +20,7 @@ angular.module('anonichat.Chatroom', [
   var syncRoom = $firebaseObject(refRoom);
   syncRoom.$bindTo($scope, "room");
 
-  var refMessages = new Firebase('https://anonichat.firebaseio.com/chatrooms/' + $routeParams.id + '/messages');
-  $scope.messages = $firebaseArray(refMessages);
+  $scope.messages = $firebaseArray(refRoom.child('messages'));
 
   $scope.username = "You";
   $scope.addMessage = function() {

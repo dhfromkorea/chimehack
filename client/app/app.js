@@ -3,7 +3,8 @@ angular.module('app', [
   'anonichat.Chatroom', 
   'anonichat.Startchat', 
   'anonichat.Signup',
-  'anonichat.Login'
+  'anonichat.Login',
+  'anonichat.Private'
 ])
 .config(function($routeProvider) {
   $routeProvider
